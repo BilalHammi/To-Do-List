@@ -7,9 +7,11 @@ function Todo() {
     let woord = inputID.value;
     if (woord.length > 0 && 25 > woord.length) {
         const newDiv = document.createElement("div");
+        const newP = document.createElement("p");
         if (6 > counterDiv) {
             newDiv.classList.add('bg-black', 'h-14', 'w-[28rem]', 'my-5', 'mx-5', 'rounded-lg');
             console.log(divID.appendChild(newDiv));
+            console.log(newDiv.appendChild(newP));
             counterDiv++;
         }
     } else {
