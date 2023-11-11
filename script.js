@@ -9,7 +9,10 @@ function Todo() {
         const newDiv = document.createElement("div");
         const newP = document.createElement("p");
         if (6 > counterDiv) {
-            newDiv.classList.add('bg-black', 'h-14', 'w-[28rem]', 'my-5', 'mx-5', 'rounded-lg');
+            newP.innerHTML = `${woord}`;
+            newP.classList.add('text-white', 'font-bold', 'ml-3');
+            newDiv.classList.add('bg-black', 'h-14', 'w-[28rem]', 'my-5', 'mx-5', 'rounded-lg',
+                'flex', 'items-center');
             console.log(divID.appendChild(newDiv));
             console.log(newDiv.appendChild(newP));
             counterDiv++;
