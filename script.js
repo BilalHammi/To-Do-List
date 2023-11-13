@@ -29,7 +29,6 @@ function Todo() {
         for (let i = 0; i < 3; i++) {
 
             const ButtonTag = document.createElement("button");
-            ButtonTag.setAttribute('id', `${idCounter}`);
             Buttonstyles.forEach(style => {
                 ButtonTag.classList.add(style);
             });
