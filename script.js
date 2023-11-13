@@ -3,6 +3,8 @@ const buttonID = document.getElementById("Knop");
 const divID = document.getElementById("mainDiv");
 let counterDiv = 0;
 let idCounter = 0;
+let Buttonid2 = 1;
+let Buttonid3 = 2;
 let newDivID;
 //Functie maken voor elke knop? Zodat ze werken.
 
@@ -29,7 +31,7 @@ function Todo() {
         for (let i = 0; i < 3; i++) {
 
             const ButtonTag = document.createElement("button");
-
+            ButtonTag.setAttribute('id', `${idCounter}`);
             Buttonstyles.forEach(style => {
                 ButtonTag.classList.add(style);
             });
@@ -52,17 +54,20 @@ function Todo() {
             console.log(idCounter);
 
             insideDiv.classList.add('flex', 'justify-end', 'w-screen', 'mr-5');
-            //kijken wat de oplossing is voor de w-screen, want het neemt de hele scherm in (wat logisch is) inplaats van de parent div.
+            //Reminder: kijken wat de oplossing is voor de w-screen, want het neemt de hele scherm in (wat logisch is) inplaats van de parent div.
             newP.classList.add('text-white', 'font-bold', 'ml-3', 'w-screen');
             newDiv.classList.add('bg-black', 'h-14', 'w-[28rem]', 'my-5', 'mx-5', 'rounded-lg', 'flex', 'items-center', 'flex-row-reverse');
-            console.log(divID.appendChild(newDiv));
+            divID.appendChild(newDiv);
             newDiv.appendChild(insideDiv);
+
             insideDiv.appendChild(buttonTagsFinal[0]);
             buttonTagsFinal[0].appendChild(iTagFinal[0]);
             buttonTagsFinal[1].appendChild(iTagFinal[1]);
             buttonTagsFinal[2].appendChild(iTagFinal[2]);
+
             insideDiv.appendChild(buttonTagsFinal[1]);
             insideDiv.appendChild(buttonTagsFinal[2]);
+
             newDiv.appendChild(newP);
             console.log(newDiv.setAttribute('id', `${idCounter}`));
             console.log();
