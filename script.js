@@ -4,8 +4,6 @@ const divID = document.getElementById("mainDiv");
 let counterDiv = 0;
 let idCounter = 0;
 let newDivID;
-let newButton2 = document.querySelector("button");
-let newButtonID2;
 //Functie maken voor elke knop? Zodat ze werken.
 
 function Todo() {
@@ -26,18 +24,18 @@ function Todo() {
     }
 
     function buttonTagFun() {
-        const ButtongElements = [];
-
+        const ButtonElements = [];
+        const Buttonstyles = ["rounded", "border-2", "hover:bg-black", "h-8", "w-8", 'bg-gray-500', 'border-gray-500', 'mx-3'];
         for (let i = 0; i < 3; i++) {
+
             const ButtonTag = document.createElement("button");
-            // newButton2.setAttribute('id', `${idCounter}`)
-            console.log(ButtonTag.classList.add('bg-green-500', 'rounded', 'border-2', 'border-green-500', 'hover:bg-black', 'h-8', 'w-8'));
-            console.log(ButtonTag.classList.add('bg-red-500', 'hover:bg-black', 'border-red-500', 'rounded', 'border-2', 'h-8', 'w-8', 'mx-3'));
-            console.log(ButtonTag.classList.add('bg-gray-500', 'rounded', 'border-2', 'hover:bg-black', 'border-gray-500', 'h-8', 'w-8'));
+
+            Buttonstyles.forEach(style => {
+                ButtonTag.classList.add(style);
+            });
+            ButtonElements.push(ButtonTag);
         }
-
-
-
+        return ButtonElements
     }
 
     let woord = inputID.value;
@@ -48,15 +46,10 @@ function Todo() {
         const newDiv = document.createElement("div");
         const insideDiv = document.createElement("div");
         const newP = document.createElement("p");
-        newButtonID2 = document.getElementById(`${idCounter}`);
         newDivID = document.getElementById(`${idCounter}`);
-        console.log(newButtonID2);
         if (6 > counterDiv) {
-            console.log(newButton2);
             newP.innerHTML = `${woord}`;
             console.log(idCounter);
-
-            newButton2.setAttribute('onclick', 'Delete()');
 
             insideDiv.classList.add('flex', 'justify-end', 'w-screen', 'mr-5');
             //kijken wat de oplossing is voor de w-screen, want het neemt de hele scherm in (wat logisch is) inplaats van de parent div.
@@ -64,12 +57,12 @@ function Todo() {
             newDiv.classList.add('bg-black', 'h-14', 'w-[28rem]', 'my-5', 'mx-5', 'rounded-lg', 'flex', 'items-center', 'flex-row-reverse');
             console.log(divID.appendChild(newDiv));
             newDiv.appendChild(insideDiv);
-            insideDiv.appendChild(newButton);
-            newButton.appendChild(iTagFinal[2]);
-            newButton2.appendChild(newI);
-            newButton3.appendChild(newI2);
-            insideDiv.appendChild(newButton2);
-            insideDiv.appendChild(newButton3);
+            insideDiv.appendChild(buttonTagsFinal[0]);
+            buttonTagsFinal[0].appendChild(iTagFinal[0]);
+            buttonTagsFinal[1].appendChild(iTagFinal[1]);
+            buttonTagsFinal[2].appendChild(iTagFinal[2]);
+            insideDiv.appendChild(buttonTagsFinal[1]);
+            insideDiv.appendChild(buttonTagsFinal[2]);
             newDiv.appendChild(newP);
             console.log(newDiv.setAttribute('id', `${idCounter}`));
             console.log();
