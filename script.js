@@ -3,8 +3,6 @@ const buttonID = document.getElementById("Knop");
 const divID = document.getElementById("mainDiv");
 let counterDiv = 0;
 let idCounter = 0;
-let Buttonid2 = 1;
-let Buttonid3 = 2;
 let newDivID;
 //Functie maken voor elke knop? Zodat ze werken.
 
@@ -59,7 +57,9 @@ function Todo() {
             newDiv.classList.add('bg-black', 'h-14', 'w-[28rem]', 'my-5', 'mx-5', 'rounded-lg', 'flex', 'items-center', 'flex-row-reverse');
             divID.appendChild(newDiv);
             newDiv.appendChild(insideDiv);
-
+            console.log(buttonTagsFinal[0].setAttribute('id', `${idCounter}`));
+            console.log(buttonTagsFinal[1].setAttribute('id', `${idCounter += 1}`));
+            console.log(buttonTagsFinal[2].setAttribute('id', `${idCounter += 1}`));
             insideDiv.appendChild(buttonTagsFinal[0]);
             buttonTagsFinal[0].appendChild(iTagFinal[0]);
             buttonTagsFinal[1].appendChild(iTagFinal[1]);
