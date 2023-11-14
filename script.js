@@ -88,13 +88,13 @@ function Todo() {
 
             buttonTagsFinal[0].addEventListener('click', () => {
                 Delete(buttonTagsFinal[0].closest('div.bg-black')); // Finds the closest div and deletes it
+                counterDiv--;
             });
 
             insideDiv.appendChild(buttonTagsFinal[1]);
             insideDiv.appendChild(buttonTagsFinal[2]);
 
             NewDivFinal[0].appendChild(newP);
-            console.log();
             counterDiv++;
         }
     } else {
