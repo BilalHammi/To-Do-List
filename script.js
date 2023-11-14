@@ -3,11 +3,17 @@ const buttonID = document.getElementById("Knop");
 const divID = document.getElementById("mainDiv");
 let counterDiv = 0;
 let idCounter = 0;
+let idCounter2 = 1;
+let idCounter3 = 2;
+let idCounter4 = 3;
 let newDivID;
 //Functie maken voor elke knop? Zodat ze werken.
 
 function Todo() {
     idCounter++;
+    idCounter2++
+    idCounter3++;
+    idCounter4++;
 
     function iTagFun() {
         const iTagArray = ["fa-trash", "fa-pen", "fa-check"];
@@ -21,6 +27,17 @@ function Todo() {
             iTagElements.push(iTag);
         }
         return iTagElements;
+    }
+
+    function NewDivTag() {
+        const NewDivElement = [];
+        const styles = ['bg-black', 'h-14', 'w-[28rem]', 'my-5', 'mx-5', 'rounded-lg', 'flex', 'items-center', 'flex-row-reverse'];
+        const newDiv = document.createElement("div");
+        styles.forEach(style => {
+            newDiv.classList.add(style);
+        });
+        NewDivElement.push(newDiv);
+        return NewDivElement;
     }
 
     function buttonTagFun() {
@@ -40,25 +57,23 @@ function Todo() {
     let woord = inputID.value;
     let iTagFinal = iTagFun();
     let buttonTagsFinal = buttonTagFun();
-    buttonTagsFinal;
+    let NewDivFinal = NewDivTag();
     if (woord.length > 0 && 30 > woord.length) {
-        const newDiv = document.createElement("div");
         const insideDiv = document.createElement("div");
         const newP = document.createElement("p");
-        newDivID = document.getElementById(`${idCounter}`);
+
         if (6 > counterDiv) {
             newP.innerHTML = `${woord}`;
-            console.log(idCounter);
-
+            console.log();
+            console.log(NewDivFinal[0].setAttribute("id", `${idCounter}`));
             insideDiv.classList.add('flex', 'justify-end', 'w-screen', 'mr-5');
             //Reminder: kijken wat de oplossing is voor de w-screen, want het neemt de hele scherm in (wat logisch is) inplaats van de parent div.
             newP.classList.add('text-white', 'font-bold', 'ml-3', 'w-screen');
-            newDiv.classList.add('bg-black', 'h-14', 'w-[28rem]', 'my-5', 'mx-5', 'rounded-lg', 'flex', 'items-center', 'flex-row-reverse');
-            divID.appendChild(newDiv);
-            newDiv.appendChild(insideDiv);
-            console.log(buttonTagsFinal[0].setAttribute('id', `${idCounter}`));
-            console.log(buttonTagsFinal[1].setAttribute('id', `${idCounter += 1}`));
-            console.log(buttonTagsFinal[2].setAttribute('id', `${idCounter += 1}`));
+            divID.appendChild(NewDivFinal[0]);
+            NewDivFinal[0].appendChild(insideDiv);
+            console.log(buttonTagsFinal[0].setAttribute('id', `${idCounter2}`));
+            console.log(buttonTagsFinal[1].setAttribute('id', `${idCounter3}`));
+            console.log(buttonTagsFinal[2].setAttribute('id', `${idCounter4}`));
             insideDiv.appendChild(buttonTagsFinal[0]);
             buttonTagsFinal[0].appendChild(iTagFinal[0]);
             buttonTagsFinal[1].appendChild(iTagFinal[1]);
@@ -67,8 +82,7 @@ function Todo() {
             insideDiv.appendChild(buttonTagsFinal[1]);
             insideDiv.appendChild(buttonTagsFinal[2]);
 
-            newDiv.appendChild(newP);
-            console.log(newDiv.setAttribute('id', `${idCounter}`));
+            NewDivFinal[0].appendChild(newP);
             console.log();
             counterDiv++;
         }
@@ -79,10 +93,8 @@ function Todo() {
 };
 
 function Delete() {
-    newButtonID2.addEventListener("click", () => {
-        newDivID.remove();
-    })
-}
+    newDivID.remove();
+};
 
 
 buttonID.addEventListener("click", Todo);
