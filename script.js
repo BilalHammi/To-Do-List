@@ -2,7 +2,7 @@ const inputID = document.getElementById("Todo");
 const buttonID = document.getElementById("Knop");
 const divID = document.getElementById("mainDiv");
 let counterDiv = 0;
-let idCounter = 0;
+let idCounter0 = 0;
 let idCounter2 = 1;
 let idCounter3 = 2;
 let idCounter4 = 3;
@@ -10,7 +10,7 @@ let newDivID;
 //Functie maken voor elke knop? Zodat ze werken.
 
 function Todo() {
-    idCounter++;
+    idCounter0++;
     idCounter2++
     idCounter3++;
     idCounter4++;
@@ -33,6 +33,7 @@ function Todo() {
         const NewDivElement = [];
         const styles = ['bg-black', 'h-14', 'w-[28rem]', 'my-5', 'mx-5', 'rounded-lg', 'flex', 'items-center', 'flex-row-reverse'];
         const newDiv = document.createElement("div");
+        newDiv.setAttribute("id", `${idCounter0}`);
         styles.forEach(style => {
             newDiv.classList.add(style);
         });
@@ -42,17 +43,32 @@ function Todo() {
 
     function buttonTagFun() {
         const ButtonElements = [];
+        const IDcounters = ["idCounter0", "idCounter1", "idCounter2"]
         const Buttonstyles = ["rounded", "border-2", "hover:bg-black", "h-8", "w-8", 'bg-gray-500', 'border-gray-500', 'mx-3'];
-        for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < IDcounters.length; j++) {
+            const NewID = IDcounters[j];
 
-            const ButtonTag = document.createElement("button");
-            Buttonstyles.forEach(style => {
-                ButtonTag.classList.add(style);
-            });
-            ButtonElements.push(ButtonTag);
+            for (let i = 0; i < 3; i++) {
+                console.log([i]);
+                let NewID = idCounter0;
+                const ButtonTag = document.createElement("button");
+                ButtonTag.setAttribute('id', `${NewID}`);
+                Buttonstyles.forEach(style => {
+                    ButtonTag.classList.add(style);
+                });
+                // ButtonTag.setAttribute("")
+                ButtonElements.push(ButtonTag);
+            }
         }
         return ButtonElements
     }
+
+    function Delete() {
+        let NewDivFinal = NewDivTag();
+        let buttonTagsFinal = buttonTagFun();
+        NewDivFinal.addEventListener("")
+        NewDivFinal[0].remove();
+    };
 
     let woord = inputID.value;
     let iTagFinal = iTagFun();
@@ -64,8 +80,6 @@ function Todo() {
 
         if (6 > counterDiv) {
             newP.innerHTML = `${woord}`;
-            console.log();
-            console.log(NewDivFinal[0].setAttribute("id", `${idCounter}`));
             insideDiv.classList.add('flex', 'justify-end', 'w-screen', 'mr-5');
             //Reminder: kijken wat de oplossing is voor de w-screen, want het neemt de hele scherm in (wat logisch is) inplaats van de parent div.
             newP.classList.add('text-white', 'font-bold', 'ml-3', 'w-screen');
@@ -90,10 +104,6 @@ function Todo() {
         console.log("Dat kan niet gozer!");
     }
     console.log(counterDiv);
-};
-
-function Delete() {
-    newDivID.remove();
 };
 
 
