@@ -5,7 +5,6 @@ let counterDiv = 0;
 let idCounter0 = 0;
 let idCounter1 = 1;
 let idCounter2 = 2;
-let newDivID;
 //Functie maken voor elke knop? Zodat ze werken.
 
 function iTagFun() {
@@ -52,12 +51,8 @@ function buttonTagFun() {
     }
 }
 
-function Delete() {
-    let NewDivFinal = NewDivTag();
-    let buttonTagsFinal = buttonTagFun();
-    // // NewDivFinal.addEventListener("")
-    console.log("Hello");
-    NewDivFinal[0].remove();
+function Delete(divToDelete) {
+    divToDelete.remove();
 
 };
 
@@ -67,7 +62,6 @@ function Todo() {
     idCounter1++
     idCounter2++;
 
-    let deleteKnop = Delete();
     let woord = inputID.value;
     let iTagFinal = iTagFun();
     let buttonTagsFinal = buttonTagFun();
@@ -91,6 +85,10 @@ function Todo() {
             buttonTagsFinal[0].appendChild(iTagFinal[0]);
             buttonTagsFinal[1].appendChild(iTagFinal[1]);
             buttonTagsFinal[2].appendChild(iTagFinal[2]);
+
+            buttonTagsFinal[0].addEventListener('click', () => {
+                Delete(buttonTagsFinal[0].closest('div.bg-black')); // Finds the closest div and deletes it
+            });
 
             insideDiv.appendChild(buttonTagsFinal[1]);
             insideDiv.appendChild(buttonTagsFinal[2]);
