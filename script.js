@@ -58,7 +58,8 @@ function Delete(divToDelete) {
 
 function Done(diveToChange, newPChange) {
     diveToChange.style.backgroundColor = 'green';
-    console.log(newPChange.classList.add('line-through'));
+    console.log(newPChange.classList.add('line-through', 'decoration-zinc-700', 'decoration-2'));
+
 }
 
 function Todo() {
@@ -91,12 +92,12 @@ function Todo() {
             buttonTagsFinal[2].appendChild(iTagFinal[2]);
 
             buttonTagsFinal[0].addEventListener('click', () => {
-                Delete(buttonTagsFinal[0].closest('div.bg-black'), newP);
+                Delete(buttonTagsFinal[0].closest('div.bg-black'));
                 counterDiv--;
             });
 
             buttonTagsFinal[2].addEventListener('click', () => {
-                Done(NewDivFinal[0]);
+                Done(NewDivFinal[0], newP);
                 counterDiv--;
             });
 
