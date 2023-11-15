@@ -56,6 +56,10 @@ function Delete(divToDelete) {
 
 };
 
+function Done(diveToChange, newPChange) {
+    diveToChange.style.backgroundColor = 'green';
+    console.log(newPChange.classList.add('line-through'));
+}
 
 function Todo() {
     idCounter0++;
@@ -71,23 +75,28 @@ function Todo() {
         const newP = document.createElement("p");
         if (6 > counterDiv) {
             newP.innerHTML = `${woord}`;
-            // ButtonTag.setAttribute('onclick', `Delete()`);
 
             insideDiv.classList.add('flex', 'justify-end', 'w-screen', 'mr-5');
             //Reminder: kijken wat de oplossing is voor de w-screen, want het neemt de hele scherm in (wat logisch is) inplaats van de parent div.
             newP.classList.add('text-white', 'font-bold', 'ml-3', 'w-screen');
             divID.appendChild(NewDivFinal[0]);
             NewDivFinal[0].appendChild(insideDiv);
+
             console.log(buttonTagsFinal[0].setAttribute('onclick', `Delete()`));
-            // console.log(buttonTagsFinal[1].setAttribute('id', `${idCounter3}`));
-            // console.log(buttonTagsFinal[2].setAttribute('id', `${idCounter4}`));
+            console.log(buttonTagsFinal[2].setAttribute('onclick', `Done()`));
+
             insideDiv.appendChild(buttonTagsFinal[0]);
             buttonTagsFinal[0].appendChild(iTagFinal[0]);
             buttonTagsFinal[1].appendChild(iTagFinal[1]);
             buttonTagsFinal[2].appendChild(iTagFinal[2]);
 
             buttonTagsFinal[0].addEventListener('click', () => {
-                Delete(buttonTagsFinal[0].closest('div.bg-black')); // Finds the closest div and deletes it
+                Delete(buttonTagsFinal[0].closest('div.bg-black'), newP);
+                counterDiv--;
+            });
+
+            buttonTagsFinal[2].addEventListener('click', () => {
+                Done(NewDivFinal[0]);
                 counterDiv--;
             });
 
