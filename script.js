@@ -44,7 +44,6 @@ function buttonTagFun() {
             Buttonstyles.forEach(style => {
                 ButtonTag.classList.add(style);
             });
-            // ButtonTag.setAttribute("")
             ButtonElements.push(ButtonTag);
         }
         return ButtonElements
@@ -59,7 +58,9 @@ function Delete(divToDelete) {
 function Done(diveToChange, newPChange) {
     diveToChange.style.backgroundColor = 'green';
     console.log(newPChange.classList.add('line-through', 'decoration-zinc-700', 'decoration-2'));
-
+    setTimeout(() => {
+        Delete(diveToChange);
+    }, 3000);
 }
 
 function Todo() {
@@ -75,6 +76,7 @@ function Todo() {
         const insideDiv = document.createElement("div");
         const newP = document.createElement("p");
         if (6 > counterDiv) {
+            counterDiv++;
             newP.innerHTML = `${woord}`;
 
             insideDiv.classList.add('flex', 'justify-end', 'w-screen', 'mr-5');
@@ -98,14 +100,12 @@ function Todo() {
 
             buttonTagsFinal[2].addEventListener('click', () => {
                 Done(NewDivFinal[0], newP);
-                counterDiv--;
             });
 
             insideDiv.appendChild(buttonTagsFinal[1]);
             insideDiv.appendChild(buttonTagsFinal[2]);
 
             NewDivFinal[0].appendChild(newP);
-            counterDiv++;
         }
     } else {
         console.log("Dat kan niet gozer!");
