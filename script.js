@@ -6,11 +6,14 @@ let idCounter0 = 0;
 let idCounter1 = 1;
 let idCounter2 = 2;
 //Functie maken voor elke knop? Zodat ze werken.
-function NewDate() {
+function NewDate(datumChange, NDiv) {
     const NieuwDate = new Date();
     const Newmonth = NieuwDate.getMonth() + 1;
     let FullDate = NieuwDate.getDate() + "-" + Newmonth + "-" + NieuwDate.getFullYear();
-    console.log(FullDate);
+    console.log(datumChange);
+    datumChange.classList.add('text-white', 'font-bold');
+    datumChange.innerHTML = `${FullDate}`;
+    NDiv.appendChild(datumChange);
 }
 
 function iTagFun() {
@@ -29,7 +32,7 @@ function iTagFun() {
 
 function NewDivTag() {
     const NewDivElement = [];
-    const styles = ['bg-black', 'h-14', 'w-[28rem]', 'my-5', 'mx-5', 'rounded-lg', 'flex', 'items-center', 'flex-row-reverse'];
+    const styles = ['bg-black', 'h-20', 'w-[28rem]', 'my-5', 'mx-5', 'rounded-lg', 'flex', 'items-center', 'flex-row-reverse'];
     const newDiv = document.createElement("div");
     newDiv.setAttribute("id", `${idCounter0}`);
     styles.forEach(style => {
@@ -42,10 +45,11 @@ function NewDivTag() {
 function buttonTagFun() {
     const ButtonElements = [];
     const IDcounters = ["idCounter0", "idCounter1", "idCounter2"];
-    const Buttonstyles = ["rounded", "border-2", "hover:bg-black", "h-8", "w-8", 'bg-gray-500', 'border-gray-500', 'mx-3'];
+    const Buttonstyles = ["rounded", "border-2", "hover:bg-black", "h-8", "w-8", 'bg-gray-500', 'border-gray-500', 'mx-3', 'mt-4'];
     for (let j = 0; j = IDcounters.length; j++) {
         for (let i = 0; i < 3; i++) {
             const ButtonTag = document.createElement("button");
+            const insideDivDate = document.createElement("div");
             ButtonTag.setAttribute('id', `${i}`);
             Buttonstyles.forEach(style => {
                 ButtonTag.classList.add(style);
@@ -76,36 +80,35 @@ function Done(diveToChange, newPChange) {
 
 function Todo() {
     idCounter0++;
-    idCounter1++
+    idCounter1++;
     idCounter2++;
-    NewDate();
     let woord = inputID.value;
     let iTagFinal = iTagFun();
     let buttonTagsFinal = buttonTagFun();
     let NewDivFinal = NewDivTag();
     if (woord.length > 0 && 30 > woord.length) {
         const insideDiv = document.createElement("div");
+        const insideDivDate = document.createElement("div");
         const inputElement = document.createElement("input");
         const newP = document.createElement("p");
+        const datum = document.createElement("p");
         if (6 > counterDiv) {
             counterDiv++;
             newP.innerHTML = `${woord}`;
+            NewDate(datum, insideDivDate);
 
             insideDiv.classList.add('flex', 'justify-end', 'w-screen', 'mr-5');
             //Reminder: kijken wat de oplossing is voor de w-screen, want het neemt de hele scherm in (wat logisch is) inplaats van de parent div.
             newP.classList.add('text-white', 'font-bold', 'ml-3', 'w-screen');
             divID.appendChild(NewDivFinal[0]);
             NewDivFinal[0].appendChild(insideDiv);
+            insideDiv.appendChild(insideDivDate);
+            // insideDivDate.appendChild();
 
-            console.log(buttonTagsFinal[0].setAttribute('onclick', `
-            Delete()
-            `));
-            console.log(buttonTagsFinal[2].setAttribute('onclick', `
-            Done()
-            `));
-            console.log(buttonTagsFinal[1].setAttribute('onclick', `
-            Edit()
-            `));
+
+            console.log(buttonTagsFinal[0].setAttribute('onclick', ` Delete()`));
+            console.log(buttonTagsFinal[2].setAttribute('onclick', `Done()`));
+            console.log(buttonTagsFinal[1].setAttribute('onclick', `Edit()`));
 
 
             insideDiv.appendChild(buttonTagsFinal[0]);
