@@ -92,7 +92,7 @@ function Todo() {
         const inputElement = document.createElement("input");
         const newP = document.createElement("p");
         const datum = document.createElement("p");
-        if (6 > counterDiv) {
+        if (5 > counterDiv) {
             counterDiv++;
             newP.innerHTML = `${woord}`;
             NewDate(datum, insideDivDate);
