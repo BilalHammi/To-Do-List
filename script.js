@@ -11,8 +11,9 @@ function NewDate(datumChange, NDiv) {
     const Newmonth = NieuwDate.getMonth() + 1;
     let FullDate = NieuwDate.getDate() + "-" + Newmonth + "-" + NieuwDate.getFullYear();
     console.log(datumChange);
-    datumChange.classList.add('text-white', 'font-bold');
+    datumChange.classList.add('text-white', 'font-bold', 'flex', 'whitespace-nowrap', 'mb-10');
     datumChange.innerHTML = `${FullDate}`;
+    // NDiv.classList.add('mb-10')
     NDiv.appendChild(datumChange);
 }
 
@@ -45,11 +46,10 @@ function NewDivTag() {
 function buttonTagFun() {
     const ButtonElements = [];
     const IDcounters = ["idCounter0", "idCounter1", "idCounter2"];
-    const Buttonstyles = ["rounded", "border-2", "hover:bg-black", "h-8", "w-8", 'bg-gray-500', 'border-gray-500', 'mx-3', 'mt-4'];
+    const Buttonstyles = ["rounded", "border-2", "hover:bg-black", "h-8", "w-8", 'bg-gray-500', 'border-gray-500', 'mx-3', 'mt-5'];
     for (let j = 0; j = IDcounters.length; j++) {
         for (let i = 0; i < 3; i++) {
             const ButtonTag = document.createElement("button");
-            const insideDivDate = document.createElement("div");
             ButtonTag.setAttribute('id', `${i}`);
             Buttonstyles.forEach(style => {
                 ButtonTag.classList.add(style);
@@ -103,7 +103,6 @@ function Todo() {
             divID.appendChild(NewDivFinal[0]);
             NewDivFinal[0].appendChild(insideDiv);
             insideDiv.appendChild(insideDivDate);
-            // insideDivDate.appendChild();
 
 
             console.log(buttonTagsFinal[0].setAttribute('onclick', ` Delete()`));
