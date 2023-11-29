@@ -13,7 +13,6 @@ function NewDate(datumChange, NDiv) {
     console.log(datumChange);
     datumChange.classList.add('text-white', 'font-bold', 'flex', 'whitespace-nowrap', 'mb-10');
     datumChange.innerHTML = `${FullDate}`;
-    // NDiv.classList.add('mb-10')
     NDiv.appendChild(datumChange);
 }
 
@@ -73,10 +72,17 @@ function Done(diveToChange, newPChange) {
     }, 3000);
 }
 
-// function Edit(InputChange, input) {
-//     let NewDivFinal = NewDivTag();
-//     NewDivFinal[0].appendChild(input);
-// }
+function Edit(input, buttonsNew) {
+    const body = document.querySelector("body");
+    body.classList.add('blur-md');
+    buttonsNew.forEach(button => {
+        if (button !== input) {
+            button.disabled = true;
+            console.log(button);
+        }
+        buttonsNew.classList.remove('hover:bg-black');
+    });
+}
 
 function Todo() {
     idCounter0++;
@@ -121,7 +127,7 @@ function Todo() {
             });
 
             buttonTagsFinal[1].addEventListener('click', () => {
-                Edit(NewDivFinal[0], inputElement);
+                Edit(inputElement, buttonTagsFinal);
             });
 
             buttonTagsFinal[2].addEventListener('click', () => {
