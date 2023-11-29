@@ -73,14 +73,19 @@ function Done(diveToChange, newPChange) {
 }
 
 function Edit(input, buttonsNew) {
+    const formDiv = document.createElement("div");
     const body = document.querySelector("body");
     body.classList.add('blur-md');
+    for (let i = 0; i < buttonsNew.length; i++) {
+        const element = buttonsNew[i];
+        console.log(element);
+        element.classList.remove('hover:bg-black');
+    };
     buttonsNew.forEach(button => {
         if (button !== input) {
             button.disabled = true;
-            console.log(button);
         }
-        buttonsNew.classList.remove('hover:bg-black');
+        // formDiv.classList.add('bg-white', 'h-96', 'w-96');
     });
 }
 
