@@ -74,20 +74,33 @@ function Done(diveToChange, newPChange) {
 
 function Edit(input, buttonsNew) {
     const formDiv = document.createElement("div");
-    const body = document.querySelector("body");
-    body.classList.add('blur-md');
+    const firstDiv = document.getElementById('exclude2');
+    const allDiv = document.querySelectorAll("div");
+
+    allDiv.forEach(div => {
+        if (!div.id.includes('exclude1') && !div.id.includes('exclude2')) {
+            div.classList.add('blur-md');
+        }
+    });
+
     for (let i = 0; i < buttonsNew.length; i++) {
         const element = buttonsNew[i];
-        console.log(element);
         element.classList.remove('hover:bg-black');
     };
+
     buttonsNew.forEach(button => {
         if (button !== input) {
             button.disabled = true;
         }
-        // formDiv.classList.add('bg-white', 'h-96', 'w-96');
     });
+
+    formDiv.classList.add('bg-white', 'h-96', 'w-96', 'z-40');
+    firstDiv.appendChild(formDiv);
+
+    // Remove blur from formDiv
+    formDiv.classList.remove('blur-md');
 }
+
 
 function Todo() {
     idCounter0++;
