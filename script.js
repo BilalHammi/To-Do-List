@@ -72,9 +72,12 @@ function Done(diveToChange, newPChange) {
     }, 3000);
 }
 
-function Edit(input, buttonsNew) {
+function Edit(input) {
+    buttonTagsHover = buttonTagFun();
     const formDiv = document.createElement("div");
     const firstDiv = document.getElementById('exclude2');
+    const buttonForm = document.createElement("button");
+    const buttonStyle = ['bg-gray-500', 'rounded-md', 'text-white', 'font-bold', 'py-3', 'px-3'];
     const allDiv = document.querySelectorAll("div");
 
     allDiv.forEach(div => {
@@ -83,24 +86,28 @@ function Edit(input, buttonsNew) {
         }
     });
 
-    for (let i = 0; i < buttonsNew.length; i++) {
-        const element = buttonsNew[i];
+    for (let i = 0; i < buttonTagsHover.length; i++) {
+        const element = buttonTagsHover[i];
         element.classList.remove('hover:bg-black');
     };
 
-    buttonsNew.forEach(button => {
+    buttonTagsHover.forEach(button => {
         if (button !== input) {
             button.disabled = true;
         }
     });
 
-    formDiv.classList.add('bg-white', 'h-96', 'w-96', 'z-40');
-    firstDiv.appendChild(formDiv);
+    formDiv.classList.add('bg-white', 'h-[26rem]', 'w-96', 'z-40', 'rounded-lg', 'absolute', 'bottom-72', 'ml-14');
 
-    // Remove blur from formDiv
-    formDiv.classList.remove('blur-md');
-}
-
+    buttonStyle.forEach(style => {
+        buttonForm.classList.add(style);
+    });
+    for (let i = 0; i < 2; i++) {
+        const element = [i];
+        firstDiv.appendChild(formDiv);
+        formDiv.appendChild(buttonForm[i]);
+    }
+};
 
 function Todo() {
     idCounter0++;
@@ -145,7 +152,7 @@ function Todo() {
             });
 
             buttonTagsFinal[1].addEventListener('click', () => {
-                Edit(inputElement, buttonTagsFinal);
+                Edit(inputElement);
             });
 
             buttonTagsFinal[2].addEventListener('click', () => {
