@@ -76,8 +76,7 @@ function Edit(input) {
     buttonTagsHover = buttonTagFun();
     const formDiv = document.createElement("div");
     const firstDiv = document.getElementById('exclude2');
-    const buttonForm = document.createElement("button");
-    const buttonStyle = ['bg-gray-500', 'rounded-md', 'text-white', 'font-bold', 'py-3', 'px-3'];
+    const buttonStyle = ['bg-gray-500', 'rounded-md', 'text-white', 'font-bold', 'py-3', 'px-16'];
     const allDiv = document.querySelectorAll("div");
 
     allDiv.forEach(div => {
@@ -98,15 +97,16 @@ function Edit(input) {
     });
 
     formDiv.classList.add('bg-white', 'h-[26rem]', 'w-96', 'z-40', 'rounded-lg', 'absolute', 'bottom-72', 'ml-14');
+    firstDiv.appendChild(formDiv);
 
-    buttonStyle.forEach(style => {
-        buttonForm.classList.add(style);
-    });
     for (let i = 0; i < 2; i++) {
-        const element = [i];
-        firstDiv.appendChild(formDiv);
-        formDiv.appendChild(buttonForm[i]);
+        const buttonForm = document.createElement("button");
+        buttonStyle.forEach(style => {
+            buttonForm.classList.add(style);
+        });
+        formDiv.appendChild(buttonForm)
     }
+
 };
 
 function Todo() {
