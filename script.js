@@ -92,7 +92,7 @@ function buttonTagHover(input) {
 
 function Form() {
     const buttonStyle = ['bg-gray-500', 'rounded-md', 'text-white', 'font-bold', 'py-5', 'px-20', 'mx-3', 'mb-2', 'hover:bg-red-500'];
-
+    formDiv.setAttribute("id", "formdiv");
 
     formDiv.classList.add('bg-white', 'h-[26rem]', 'w-96', 'z-40', 'rounded-lg', 'absolute', 'bottom-72', 'ml-14', 'flex', 'items-end', 'justify-center');
 
@@ -105,13 +105,12 @@ function Form() {
     }
 }
 
-function blurselector(excludeID) {
+function blurselector() {
     const allDiv = document.querySelectorAll("div");
     firstDiv.appendChild(formDiv);
 
-
     allDiv.forEach(div => {
-        if (!div.id.includes('exclude1') && !div.id.includes('exclude2')) {
+        if (!div.id.includes('exclude1') && !div.id.includes('exclude2') && !div.id.includes('formdiv')) {
             div.classList.add('blur-md');
         }
     });
