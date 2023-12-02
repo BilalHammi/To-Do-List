@@ -1,6 +1,9 @@
 const inputID = document.getElementById("Todo");
 const buttonID = document.getElementById("Knop");
 const divID = document.getElementById("mainDiv");
+const firstDiv = document.getElementById('exclude2');
+const formDiv = document.createElement("div");
+
 let counterDiv = 0;
 let idCounter0 = 0;
 let idCounter1 = 1;
@@ -72,18 +75,8 @@ function Done(diveToChange, newPChange) {
     }, 3000);
 }
 
-function Edit(input) {
-    buttonTagsHover = buttonTagFun();
-    const formDiv = document.createElement("div");
-    const firstDiv = document.getElementById('exclude2');
-    const buttonStyle = ['bg-gray-500', 'rounded-md', 'text-white', 'font-bold', 'py-3', 'px-16'];
-    const allDiv = document.querySelectorAll("div");
-
-    allDiv.forEach(div => {
-        if (!div.id.includes('exclude1') && !div.id.includes('exclude2')) {
-            div.classList.add('blur-md');
-        }
-    });
+function buttonTagHover(input) {
+    let buttonTagsHover = buttonTagFun();
 
     for (let i = 0; i < buttonTagsHover.length; i++) {
         const element = buttonTagsHover[i];
@@ -95,9 +88,13 @@ function Edit(input) {
             button.disabled = true;
         }
     });
+}
 
-    formDiv.classList.add('bg-white', 'h-[26rem]', 'w-96', 'z-40', 'rounded-lg', 'absolute', 'bottom-72', 'ml-14');
-    firstDiv.appendChild(formDiv);
+function Form() {
+    const buttonStyle = ['bg-gray-500', 'rounded-md', 'text-white', 'font-bold', 'py-5', 'px-20', 'mx-3', 'mb-2', 'hover:bg-red-500'];
+
+
+    formDiv.classList.add('bg-white', 'h-[26rem]', 'w-96', 'z-40', 'rounded-lg', 'absolute', 'bottom-72', 'ml-14', 'flex', 'items-end', 'justify-center');
 
     for (let i = 0; i < 2; i++) {
         const buttonForm = document.createElement("button");
@@ -106,7 +103,24 @@ function Edit(input) {
         });
         formDiv.appendChild(buttonForm)
     }
+}
 
+function blurselector(excludeID) {
+    const allDiv = document.querySelectorAll("div");
+    firstDiv.appendChild(formDiv);
+
+
+    allDiv.forEach(div => {
+        if (!div.id.includes('exclude1') && !div.id.includes('exclude2')) {
+            div.classList.add('blur-md');
+        }
+    });
+}
+
+function Edit() {
+    const FormFun = Form();
+    const ButtonDisable = buttonTagHover();
+    const blurselectorFun = blurselector();
 };
 
 function Todo() {
