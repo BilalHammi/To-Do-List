@@ -1,3 +1,4 @@
+import { Form } from './form_function';
 const inputID = document.getElementById("Todo");
 const buttonID = document.getElementById("Knop");
 const divID = document.getElementById("mainDiv");
@@ -32,7 +33,7 @@ function iTagFun() {
     return iTagElements;
 }
 
-function NewDivTag() {
+function newDivTag() {
     const NewDivElement = [];
     const styles = ['bg-black', 'h-20', 'w-[28rem]', 'my-5', 'mx-5', 'rounded-lg', 'flex', 'items-center', 'flex-row-reverse'];
     const newDiv = document.createElement("div");
@@ -76,37 +77,7 @@ function buttonTagHover(input) {
     });
 }
 
-function Form() {
 
-    formDiv.setAttribute("id", "formdiv");
-    formDiv.classList.add('bg-white', 'h-[26rem]', 'w-96', 'z-40', 'rounded-lg', 'absolute', 'bottom-72', 'ml-14', 'flex', 'items-end', 'justify-center');
-
-    for (let i = 0; i < 1; i++) {
-        const buttonForm = document.createElement("button");
-        const buttonStyle = ['bg-gray-500', 'rounded-md', 'text-white', 'font-bold', 'py-4', 'px-12', 'mx-3', 'mb-3', 'hover:bg-red-500'];
-
-        buttonStyle.forEach(style => {
-            buttonForm.classList.add(style);
-        });
-
-        idCounter0++;
-
-        buttonForm.setAttribute('id', `button_${idCounter0}`);
-
-        formDiv.appendChild(buttonForm);
-
-        const buttonformID2 = document.getElementById(`button_${idCounter0}`);
-        const buttonformID3 = document.getElementById(`button_${idCounter0}`);
-
-        if (idCounter0 === 2) {
-            buttonformID2.innerHTML = 'Cancel';
-        } else {
-            buttonformID3.innerHTML = 'Confirm';
-        }
-
-
-    }
-}
 
 
 function blurselector() {
@@ -148,7 +119,7 @@ function Todo() {
     let woord = inputID.value;
     let iTagFinal = iTagFun();
     let buttonTagsFinal = buttonTagFun();
-    let NewDivFinal = NewDivTag();
+    let newDivFinal = newDivTag();
     if (woord.length > 0 && 30 > woord.length) {
         const insideDiv = document.createElement("div");
         const insideDivDate = document.createElement("div");
@@ -163,8 +134,8 @@ function Todo() {
             insideDiv.classList.add('flex', 'justify-end', 'w-screen', 'mr-5');
             //Reminder: kijken wat de oplossing is voor de w-screen, want het neemt de hele scherm in (wat logisch is) inplaats van de parent div.
             newP.classList.add('text-white', 'font-bold', 'ml-3', 'w-screen');
-            divID.appendChild(NewDivFinal[0]);
-            NewDivFinal[0].appendChild(insideDiv);
+            divID.appendChild(newDivFinal[0]);
+            newDivFinal[0].appendChild(insideDiv);
             insideDiv.appendChild(insideDivDate);
 
 
@@ -188,14 +159,14 @@ function Todo() {
             });
 
             buttonTagsFinal[2].addEventListener('click', () => {
-                Done(NewDivFinal[0], newP);
+                Done(newDivFinal[0], newP);
                 counterDiv--;
             });
 
             insideDiv.appendChild(buttonTagsFinal[1]);
             insideDiv.appendChild(buttonTagsFinal[2]);
 
-            NewDivFinal[0].appendChild(newP);
+            newDivFinal[0].appendChild(newP);
         }
     } else {
         console.log("Dat kan niet gozer!");
