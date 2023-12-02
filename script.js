@@ -13,7 +13,6 @@ function NewDate(datumChange, NDiv) {
     const NieuwDate = new Date();
     const Newmonth = NieuwDate.getMonth() + 1;
     let FullDate = NieuwDate.getDate() + "-" + Newmonth + "-" + NieuwDate.getFullYear();
-    console.log(datumChange);
     datumChange.classList.add('text-white', 'font-bold', 'flex', 'whitespace-nowrap', 'mb-10');
     datumChange.innerHTML = `${FullDate}`;
     NDiv.appendChild(datumChange);
@@ -62,19 +61,6 @@ function buttonTagFun() {
     }
 }
 
-function Delete(divToDelete) {
-    divToDelete.remove();
-
-};
-
-function Done(diveToChange, newPChange) {
-    diveToChange.style.backgroundColor = 'green';
-    console.log(newPChange.classList.add('line-through', 'decoration-zinc-700', 'decoration-2'));
-    setTimeout(() => {
-        Delete(diveToChange);
-    }, 3000);
-}
-
 function buttonTagHover(input) {
     let buttonTagsHover = buttonTagFun();
 
@@ -91,18 +77,21 @@ function buttonTagHover(input) {
 }
 
 function Form() {
+    const buttonArray = [];
+    const buttonForm = document.createElement("button");
     const buttonStyle = ['bg-gray-500', 'rounded-md', 'text-white', 'font-bold', 'py-5', 'px-20', 'mx-3', 'mb-2', 'hover:bg-red-500'];
     formDiv.setAttribute("id", "formdiv");
 
     formDiv.classList.add('bg-white', 'h-[26rem]', 'w-96', 'z-40', 'rounded-lg', 'absolute', 'bottom-72', 'ml-14', 'flex', 'items-end', 'justify-center');
 
     for (let i = 0; i < 2; i++) {
-        const buttonForm = document.createElement("button");
         buttonStyle.forEach(style => {
             buttonForm.classList.add(style);
         });
-        formDiv.appendChild(buttonForm)
     }
+    buttonArray.push(buttonForm);
+    formDiv.appendChild(buttonForm)
+    console.log(buttonArray);
 }
 
 function blurselector() {
@@ -116,10 +105,25 @@ function blurselector() {
     });
 }
 
+function Delete(divToDelete) {
+    divToDelete.remove();
+
+};
+
+function Done(diveToChange, newPChange) {
+    diveToChange.style.backgroundColor = 'green';
+    console.log(newPChange.classList.add('line-through', 'decoration-zinc-700', 'decoration-2'));
+    setTimeout(() => {
+        Delete(diveToChange);
+    }, 3000);
+}
+
+
+
 function Edit() {
-    const FormFun = Form();
     const ButtonDisable = buttonTagHover();
     const blurselectorFun = blurselector();
+    const FormFun = Form();
 };
 
 function Todo() {
