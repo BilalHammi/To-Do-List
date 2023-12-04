@@ -131,7 +131,7 @@ function formFun() {
         buttonForm.classList.add(style);
     });
 
-    formDiv.appendChild(buttonForm); // Append each button to the formDiv
+    formDiv.appendChild(buttonForm);
 
     console.log(buttonsInParent);
 
@@ -142,13 +142,16 @@ function formFun() {
         formDiv.remove();
         removeBlurSelector();
 
-        // Remove buttons starting from index 2 if they exist
-        for (let i = buttonsInParent.length - 1; i > 1; i--) {
+        for (let i = buttonsInParent.length; i >= 0; i--) {
             if (buttonsInParent[i]) {
+                console.log(buttonsInParent[i])
                 buttonsInParent[i].remove();
             }
         }
     })
+
+    console.log(buttons)
+
 }
 
 
