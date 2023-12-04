@@ -5,6 +5,7 @@ const firstDiv = document.getElementById('exclude2');
 const formDiv = document.createElement("div");
 
 let counterDiv = 0;
+let buttonCounter = 0;
 let idCounter0 = 0;
 let idCounter1 = 1;
 let idCounter2 = 2;
@@ -117,7 +118,6 @@ function Done(diveToChange, newPChange) {
 
 
 function formFun() {
-
     formDiv.setAttribute("id", "formdiv");
     formDiv.classList.add('bg-white', 'h-[17rem]', 'w-96', 'z-40', 'rounded-lg', 'absolute', 'bottom-72', 'ml-14', 'flex', 'items-end', 'justify-center');
 
@@ -133,14 +133,24 @@ function formFun() {
 
     formDiv.appendChild(buttonForm); // Append each button to the formDiv
 
+    console.log(buttonsInParent);
+
     buttonsInParent[0].innerHTML = "Cancel";
     buttonsInParent[1].innerHTML = "Confirm";
 
     buttonsInParent[0].addEventListener("click", () => {
         formDiv.remove();
         removeBlurSelector();
+
+        // Remove buttons starting from index 2 if they exist
+        for (let i = buttonsInParent.length - 1; i > 1; i--) {
+            if (buttonsInParent[i]) {
+                buttonsInParent[i].remove();
+            }
+        }
     })
 }
+
 
 function Edit() {
     buttonTagHover();
@@ -210,4 +220,5 @@ function Todo() {
 };
 
 
+buttonID.addEventListener("click", Todo);
 buttonID.addEventListener("click", Todo);
