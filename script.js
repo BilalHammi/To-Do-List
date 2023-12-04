@@ -1,4 +1,3 @@
-import { Form } from './form_function';
 const inputID = document.getElementById("Todo");
 const buttonID = document.getElementById("Knop");
 const divID = document.getElementById("mainDiv");
@@ -62,23 +61,22 @@ function buttonTagFun() {
     }
 }
 
-function buttonTagHover(input) {
+function buttonTagHover() {
+    const inputElement = document.createElement("input");
     let buttonTagsHover = buttonTagFun();
-
+    console.log(buttonTagsHover);
     for (let i = 0; i < buttonTagsHover.length; i++) {
         const element = buttonTagsHover[i];
+        console.log(element);
         element.classList.remove('hover:bg-black');
     };
 
     buttonTagsHover.forEach(button => {
-        if (button !== input) {
+        if (button !== inputElement) {
             button.disabled = true;
         }
     });
 }
-
-
-
 
 function blurselector() {
     const allDiv = document.querySelectorAll("div");
@@ -106,10 +104,30 @@ function Done(diveToChange, newPChange) {
 
 
 
+
+function formFun() {
+    formDiv.setAttribute("id", "formdiv");
+    formDiv.classList.add('bg-white', 'h-[17rem]', 'w-96', 'z-40', 'rounded-lg', 'absolute', 'bottom-72', 'ml-14', 'flex', 'items-end', 'justify-center');
+    const buttonForm = document.createElement("button");
+    const buttonStyle = ['bg-gray-500', 'rounded-md', 'text-white', 'font-bold', 'py-3', 'px-10', 'mx-3', 'mb-3', 'hover:bg-black'];
+
+    const formDivID = document.getElementById("formdiv");
+    const buttonsInParent = formDivID.getElementsByTagName("button");
+
+    buttonStyle.forEach(style => {
+        buttonForm.classList.add(style);
+    });
+
+    formDiv.appendChild(buttonForm); // Append each button to the formDiv
+
+    buttonsInParent[0].innerHTML = "Cancel";
+    buttonsInParent[1].innerHTML = "Confirm";
+}
+
 function Edit() {
-    const ButtonDisable = buttonTagHover();
-    const blurselectorFun = blurselector();
-    const FormFun = Form();
+    buttonTagHover();
+    blurselector();
+    formFun();
 };
 
 function Todo() {
@@ -123,7 +141,6 @@ function Todo() {
     if (woord.length > 0 && 30 > woord.length) {
         const insideDiv = document.createElement("div");
         const insideDivDate = document.createElement("div");
-        const inputElement = document.createElement("input");
         const newP = document.createElement("p");
         const datum = document.createElement("p");
         if (5 > counterDiv) {
@@ -155,7 +172,7 @@ function Todo() {
             });
 
             buttonTagsFinal[1].addEventListener('click', () => {
-                Edit(inputElement);
+                Edit(insideDiv);
             });
 
             buttonTagsFinal[2].addEventListener('click', () => {
