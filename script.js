@@ -89,8 +89,19 @@ function blurselector() {
     });
 }
 
+function removeBlurSelector() {
+    const allDiv = document.querySelectorAll("div");
+
+    allDiv.forEach(div => {
+        if (!div.id.includes('exclude1') && !div.id.includes('exclude2') && !div.id.includes('formdiv')) {
+            div.classList.remove('blur-md'); // Remove the blur effect class
+        }
+    });
+}
+
 function Delete(divToDelete) {
     divToDelete.remove();
+
 
 };
 
@@ -106,8 +117,10 @@ function Done(diveToChange, newPChange) {
 
 
 function formFun() {
+
     formDiv.setAttribute("id", "formdiv");
     formDiv.classList.add('bg-white', 'h-[17rem]', 'w-96', 'z-40', 'rounded-lg', 'absolute', 'bottom-72', 'ml-14', 'flex', 'items-end', 'justify-center');
+
     const buttonForm = document.createElement("button");
     const buttonStyle = ['bg-gray-500', 'rounded-md', 'text-white', 'font-bold', 'py-3', 'px-10', 'mx-3', 'mb-3', 'hover:bg-black'];
 
@@ -122,6 +135,11 @@ function formFun() {
 
     buttonsInParent[0].innerHTML = "Cancel";
     buttonsInParent[1].innerHTML = "Confirm";
+
+    buttonsInParent[0].addEventListener("click", () => {
+        formDiv.remove();
+        removeBlurSelector();
+    })
 }
 
 function Edit() {
