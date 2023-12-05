@@ -4,6 +4,7 @@ const divID = document.getElementById("mainDiv");
 const firstDiv = document.getElementById('exclude2');
 const formDiv = document.createElement("div");
 let newButton;
+let woord;
 
 let counterDiv = 0;
 let buttonCounter = 0;
@@ -84,7 +85,7 @@ function blurselector() {
     firstDiv.appendChild(formDiv);
 
     allDiv.forEach(div => {
-        if (!div.id.includes('exclude1') && !div.id.includes('exclude2') && !div.id.includes('formdiv')) {
+        if (!div.id.includes('exclude1') && !div.id.includes('exclude2') && !div.id.includes('formdiv') && !div.id.includes('exclude3')) {
             div.classList.add('blur-md');
         }
     });
@@ -115,26 +116,19 @@ function Done(diveToChange, newPChange) {
 }
 
 function inputForm(styleArray, styleElement) {
-    const divInsideForm = document.createElement('div');
     const array = styleArray;
     const Element = document.createElement(`${styleElement}`);
     array.forEach(style => {
         Element.classList.add(style)
-    });
-    if (styleElement === "button") {
-        console.log("Werkt");
-        //de element hieronder in een variable zetten en dan werkend zetten in de formFun() functie.
-        divInsideForm.append(Element);
-        console.log(formDiv.appendChild(divvie));
-    } else {
         formDiv.appendChild(Element);
-    }
-
+    });
+    console.log(styleElement);
 
 }
 
-inputForm(['rounded-lg', 'w-screen', 'h-10', 'border-2', 'border-black', 'font-bold', 'py-2', 'mx-14'], "input");
-// inputForm();
+inputForm(['rounded-lg', 'w-48', 'h-10', 'border-2', 'border-black', 'mb-[8rem]', 'fixed', 'font-bold', 'pl-3'], "input");
+inputForm(['text-black', 'font-bold'], "h1");
+
 
 function formFun() {
     formDiv.setAttribute("id", "formdiv");
@@ -168,7 +162,6 @@ function Edit() {
     buttonTagHover();
     blurselector();
     formFun();
-
 };
 
 function Todo() {
@@ -197,9 +190,15 @@ function Todo() {
             insideDiv.appendChild(insideDivDate);
 
 
-            console.log(buttonTagsFinal[0].setAttribute('onclick', ` Delete()`));
-            console.log(buttonTagsFinal[2].setAttribute('onclick', `Done()`));
-            console.log(buttonTagsFinal[1].setAttribute('onclick', `Edit()`));
+            console.log(buttonTagsFinal[0].setAttribute('onclick', `
+            Delete()
+            `));
+            console.log(buttonTagsFinal[2].setAttribute('onclick', `
+            Done()
+            `));
+            console.log(buttonTagsFinal[1].setAttribute('onclick', `
+            Edit()
+            `));
 
 
             insideDiv.appendChild(buttonTagsFinal[0]);
