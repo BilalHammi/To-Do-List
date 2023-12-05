@@ -3,6 +3,7 @@ const buttonID = document.getElementById("Knop");
 const divID = document.getElementById("mainDiv");
 const firstDiv = document.getElementById('exclude2');
 const formDiv = document.createElement("div");
+let newButton;
 
 let counterDiv = 0;
 let buttonCounter = 0;
@@ -65,11 +66,10 @@ function buttonTagFun() {
 function buttonTagHover() {
     const inputElement = document.createElement("input");
     let buttonTagsHover = buttonTagFun();
-    console.log(buttonTagsHover);
     for (let i = 0; i < buttonTagsHover.length; i++) {
-        const element = buttonTagsHover[i];
-        console.log(element);
-        element.classList.remove('hover:bg-black');
+        newButton = buttonTagsHover[i];
+        newButton.classList.remove('hover:bg-black');
+        console.log(newButton);
     };
 
     buttonTagsHover.forEach(button => {
@@ -114,24 +114,36 @@ function Done(diveToChange, newPChange) {
     }, 3000);
 }
 
+function inputForm(styleArray, styleElement) {
+    const divInsideForm = document.createElement('div');
+    const array = styleArray;
+    const Element = document.createElement(`${styleElement}`);
+    array.forEach(style => {
+        Element.classList.add(style)
+    });
+    if (styleElement === "button") {
+        console.log("Werkt");
+        //de element hieronder in een variable zetten en dan werkend zetten in de formFun() functie.
+        divInsideForm.append(Element);
+        console.log(formDiv.appendChild(divvie));
+    } else {
+        formDiv.appendChild(Element);
+    }
 
 
+}
+
+inputForm(['rounded-lg', 'w-screen', 'h-10', 'border-2', 'border-black', 'font-bold', 'py-2', 'mx-14'], "input");
+// inputForm();
 
 function formFun() {
     formDiv.setAttribute("id", "formdiv");
     formDiv.classList.add('bg-white', 'h-[17rem]', 'w-96', 'z-40', 'rounded-lg', 'absolute', 'bottom-72', 'ml-14', 'flex', 'items-end', 'justify-center');
 
-    const buttonForm = document.createElement("button");
-    const buttonStyle = ['bg-gray-500', 'rounded-md', 'text-white', 'font-bold', 'py-3', 'px-10', 'mx-3', 'mb-3', 'hover:bg-black'];
-
     const formDivID = document.getElementById("formdiv");
     const buttonsInParent = formDivID.getElementsByTagName("button");
 
-    buttonStyle.forEach(style => {
-        buttonForm.classList.add(style);
-    });
-
-    formDiv.appendChild(buttonForm);
+    inputForm(['bg-gray-500', 'rounded-md', 'text-white', 'font-bold', 'py-3', 'px-10', 'mx-3', 'mb-3', 'hover:bg-black', 'justify-center'], "button");
 
     console.log(buttonsInParent);
 
@@ -149,9 +161,6 @@ function formFun() {
             }
         }
     })
-
-    console.log(buttons)
-
 }
 
 
@@ -159,6 +168,7 @@ function Edit() {
     buttonTagHover();
     blurselector();
     formFun();
+
 };
 
 function Todo() {
@@ -203,7 +213,7 @@ function Todo() {
             });
 
             buttonTagsFinal[1].addEventListener('click', () => {
-                Edit(insideDiv);
+                Edit();
             });
 
             buttonTagsFinal[2].addEventListener('click', () => {
