@@ -1,3 +1,5 @@
+import { formFun } from './FormFunction.js';
+
 const inputID = document.getElementById("Todo");
 const buttonID = document.getElementById("Knop");
 const divID = document.getElementById("mainDiv");
@@ -15,6 +17,7 @@ let idCounter2 = 2;
 function NewDate(datumChange, NDiv) {
     const NieuwDate = new Date();
     const Newmonth = NieuwDate.getMonth() + 1;
+
     let FullDate = NieuwDate.getDate() + "-" + Newmonth + "-" + NieuwDate.getFullYear();
     datumChange.classList.add('text-white', 'font-bold', 'flex', 'whitespace-nowrap', 'mb-10');
     datumChange.innerHTML = `${FullDate}`;
@@ -91,20 +94,8 @@ function blurselector() {
     });
 }
 
-function removeBlurSelector() {
-    const allDiv = document.querySelectorAll("div");
-
-    allDiv.forEach(div => {
-        if (!div.id.includes('exclude1') && !div.id.includes('exclude2') && !div.id.includes('formdiv')) {
-            div.classList.remove('blur-md'); // Remove the blur effect class
-        }
-    });
-}
-
 function Delete(divToDelete) {
     divToDelete.remove();
-
-
 };
 
 function Done(diveToChange, newPChange) {
@@ -115,53 +106,12 @@ function Done(diveToChange, newPChange) {
     }, 3000);
 }
 
-function inputForm(styleArray, styleElement) {
-    const array = styleArray;
-    const Element = document.createElement(`${styleElement}`);
-    array.forEach(style => {
-        Element.classList.add(style)
-        formDiv.appendChild(Element);
-    });
-    console.log(styleElement);
-
-}
-
-inputForm(['rounded-lg', 'w-48', 'h-10', 'border-2', 'border-black', 'mb-[8rem]', 'fixed', 'font-bold', 'pl-3'], "input");
-inputForm(['text-black', 'font-bold'], "h1");
 
 
-function formFun() {
-    formDiv.setAttribute("id", "formdiv");
-    formDiv.classList.add('bg-white', 'h-[17rem]', 'w-96', 'z-40', 'rounded-lg', 'absolute', 'bottom-72', 'ml-14', 'flex', 'items-end', 'justify-center');
-
-    const formDivID = document.getElementById("formdiv");
-    const buttonsInParent = formDivID.getElementsByTagName("button");
-
-    inputForm(['bg-gray-500', 'rounded-md', 'text-white', 'font-bold', 'py-3', 'px-10', 'mx-3', 'mb-3', 'hover:bg-black', 'justify-center'], "button");
-
-    console.log(buttonsInParent);
-
-    buttonsInParent[0].innerHTML = "Cancel";
-    buttonsInParent[1].innerHTML = "Confirm";
-
-    buttonsInParent[0].addEventListener("click", () => {
-        formDiv.remove();
-        removeBlurSelector();
-
-        for (let i = buttonsInParent.length; i >= 0; i--) {
-            if (buttonsInParent[i]) {
-                console.log(buttonsInParent[i])
-                buttonsInParent[i].remove();
-            }
-        }
-    })
-}
-
-
-function Edit() {
+function Edit(woordValue) {
     buttonTagHover();
     blurselector();
-    formFun();
+    formFun(woordValue);
 };
 
 function Todo() {
@@ -189,17 +139,15 @@ function Todo() {
             newDivFinal[0].appendChild(insideDiv);
             insideDiv.appendChild(insideDivDate);
 
-
             console.log(buttonTagsFinal[0].setAttribute('onclick', `
-            Delete()
-            `));
+                Delete()
+                `));
             console.log(buttonTagsFinal[2].setAttribute('onclick', `
-            Done()
-            `));
+                Done()
+                `));
             console.log(buttonTagsFinal[1].setAttribute('onclick', `
-            Edit()
-            `));
-
+                Edit()
+                `));
 
             insideDiv.appendChild(buttonTagsFinal[0]);
             buttonTagsFinal[0].appendChild(iTagFinal[0]);
@@ -212,7 +160,7 @@ function Todo() {
             });
 
             buttonTagsFinal[1].addEventListener('click', () => {
-                Edit();
+                Edit(woord);
             });
 
             buttonTagsFinal[2].addEventListener('click', () => {
@@ -230,7 +178,6 @@ function Todo() {
     }
     console.log(counterDiv);
 };
-
 
 buttonID.addEventListener("click", Todo);
 buttonID.addEventListener("click", Todo);
