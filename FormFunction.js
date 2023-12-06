@@ -16,13 +16,22 @@ export function inputForm(styleArray, styleElement, woordValue, parentElement) {
     array.forEach(style => {
         Element.classList.add(style);
     });
+    switch (styleElement) {
+        case "input":
+            Element.value = woordValue;
+            inputName = document.getElementsByTagName(`${styleElement}`);
+            console.log(parentElement.appendChild(Element));
+            break;
+        case "h1":
+            Element.innerHTML = "Change you're goal!";
+            console.log(parentElement.appendChild(Element));
+            break;
+        case "button":
+            console.log(parentElement.appendChild(Element));
+            break;
 
-    if (styleElement === "input") {
-        Element.value = woordValue;
-        inputName = document.getElementsByTagName(`${styleElement}`);
-        console.log(parentElement.appendChild(Element));
-    } else {
-        console.log(parentElement.appendChild(Element));
+        default:
+            break;
     }
 };
 
@@ -35,15 +44,24 @@ export function formFun(woordValue) {
 
     firstDiv.append(formDiv);
 
+
+
+
     if (woordValue) {
         for (let i = 0; i < 1; i++) {
             inputForm(['rounded-lg', 'w-48', 'h-10', 'border-2', 'border-black', 'mb-[8rem]', 'fixed', 'font-bold', 'pl-3'], "input", woordValue, formDiv);
             break;
         }
     }
+    if (woordValue) {
+        for (let i = 0; i < 1; i++) {
+            inputForm(['absolute', 'font-bold', 'text-lg', 'text-center', 'mb-48'], "h1", woordValue, formDiv);
+            break;
+        }
 
-    inputForm(['bg-gray-500', 'rounded-md', 'text-white', 'font-bold', 'py-3', 'px-10', 'mx-3', 'mb-3', 'hover:bg-black', 'justify-center', 'transition', 'ease-in-out', 'delay-100', 'hover:scale-110', 'duration-200'], "button", woordValue, formDiv);
-    inputForm(['bg-gray-500', 'rounded-md', 'text-white', 'font-bold', 'py-3', 'px-10', 'mx-3', 'mb-3', 'hover:bg-black', 'justify-center', 'transition', 'ease-in-out', 'delay-100', 'hover:scale-110', 'duration-200'], "button", woordValue, formDiv);
+    }
+    inputForm(['bg-gray-500', 'rounded-md', 'text-white', 'font-bold', 'py-3', 'px-10', 'mx-3', 'mb-6', 'hover:bg-black', 'justify-center', 'transition', 'ease-in-out', 'delay-100', 'hover:scale-110', 'duration-200'], "button", woordValue, formDiv);
+    inputForm(['bg-gray-500', 'rounded-md', 'text-white', 'font-bold', 'py-3', 'px-10', 'mx-3', 'mb-6', 'hover:bg-black', 'justify-center', 'transition', 'ease-in-out', 'delay-100', 'hover:scale-110', 'duration-200'], "button", woordValue, formDiv);
 
     //transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300
 
