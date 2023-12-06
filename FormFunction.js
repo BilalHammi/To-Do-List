@@ -1,3 +1,6 @@
+// import { updateWoord } from './script.js';
+let test;
+let formInputWorth = '';
 export function removeBlurSelector() {
     const allDiv = document.querySelectorAll("div");
 
@@ -18,7 +21,12 @@ export function inputForm(styleArray, styleElement, woordValue, parentElement) {
     });
     switch (styleElement) {
         case "input":
-            Element.value = woordValue;
+            Element.setAttribute('id', 'inputFormID');
+            if (formInputWorth === '') {
+                Element.value = woordValue;
+            } else {
+                Element.value = test;
+            }
             inputName = document.getElementsByTagName(`${styleElement}`);
             console.log(parentElement.appendChild(Element));
             break;
@@ -35,7 +43,7 @@ export function inputForm(styleArray, styleElement, woordValue, parentElement) {
     }
 };
 
-export function formFun(woordValue) {
+export function formFun(ParaValue, woordValue) {
     const firstDiv = document.getElementById('exclude2');
     const formDiv = document.createElement("div");
 
@@ -63,7 +71,6 @@ export function formFun(woordValue) {
     inputForm(['bg-gray-500', 'rounded-md', 'text-white', 'font-bold', 'py-3', 'px-10', 'mx-3', 'mb-6', 'hover:bg-black', 'justify-center', 'transition', 'ease-in-out', 'delay-100', 'hover:scale-110', 'duration-200'], "button", woordValue, formDiv);
     inputForm(['bg-gray-500', 'rounded-md', 'text-white', 'font-bold', 'py-3', 'px-10', 'mx-3', 'mb-6', 'hover:bg-black', 'justify-center', 'transition', 'ease-in-out', 'delay-100', 'hover:scale-110', 'duration-200'], "button", woordValue, formDiv);
 
-    //transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300
 
     const formDivID = document.getElementById("formdiv");
     const buttonsInParent = formDivID.getElementsByTagName("button");
@@ -85,7 +92,13 @@ export function formFun(woordValue) {
         }
     })
 
-    //     buttonsInParent[1].addEventListener("click", () => {
-    //         woord =
-    //     })
+    buttonsInParent[1].addEventListener("click", () => {
+        console.log("test");
+        const inputForm = document.getElementById("inputFormID");
+        formInputWorth = inputForm.value;
+        console.log(ParaValue.innerHTML = inputForm.value);
+        test = inputForm.value;
+        formDiv.remove();
+        removeBlurSelector();
+    })
 };

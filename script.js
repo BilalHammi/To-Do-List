@@ -9,7 +9,7 @@ const divID = document.getElementById("mainDiv");
 const firstDiv = document.getElementById('exclude2');
 const formDiv = document.createElement("div");
 let newButton;
-let woord;
+export let woord = '';
 
 let counterDiv = 0;
 let buttonCounter = 0;
@@ -110,10 +110,10 @@ function Done(diveToChange, newPChange) {
     }, 3000);
 }
 
-function Edit(woordValue) {
+function Edit(ParaValue, woordValue) {
     buttonTagHover();
     blurselector();
-    formFun(woordValue);
+    formFun(ParaValue, woordValue);
 };
 
 function Todo() {
@@ -162,7 +162,7 @@ function Todo() {
             });
 
             buttonTagsFinal[1].addEventListener('click', () => {
-                Edit(woord);
+                Edit(newP, woord);
             });
 
             buttonTagsFinal[2].addEventListener('click', () => {
