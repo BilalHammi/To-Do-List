@@ -32,6 +32,7 @@ export function formFun(woordValue) {
 
     formDiv.setAttribute("id", "formdiv");
     formDiv.classList.add('bg-white', 'h-[17rem]', 'w-96', 'z-40', 'rounded-lg', 'absolute', 'bottom-72', 'ml-14', 'flex', 'items-end', 'justify-center');
+
     firstDiv.append(formDiv);
 
     if (woordValue) {
@@ -41,9 +42,10 @@ export function formFun(woordValue) {
         }
     }
 
-    inputForm(['bg-gray-500', 'rounded-md', 'text-white', 'font-bold', 'py-3', 'px-10', 'mx-3', 'mb-3', 'hover:bg-black', 'justify-center'], "button", woordValue, formDiv);
-    inputForm(['bg-gray-500', 'rounded-md', 'text-white', 'font-bold', 'py-3', 'px-10', 'mx-3', 'mb-3', 'hover:bg-black', 'justify-center'], "button", woordValue, formDiv);
+    inputForm(['bg-gray-500', 'rounded-md', 'text-white', 'font-bold', 'py-3', 'px-10', 'mx-3', 'mb-3', 'hover:bg-black', 'justify-center', 'transition', 'ease-in-out', 'delay-100', 'hover:scale-110', 'duration-200'], "button", woordValue, formDiv);
+    inputForm(['bg-gray-500', 'rounded-md', 'text-white', 'font-bold', 'py-3', 'px-10', 'mx-3', 'mb-3', 'hover:bg-black', 'justify-center', 'transition', 'ease-in-out', 'delay-100', 'hover:scale-110', 'duration-200'], "button", woordValue, formDiv);
 
+    //transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300
 
     const formDivID = document.getElementById("formdiv");
     const buttonsInParent = formDivID.getElementsByTagName("button");
