@@ -1,4 +1,7 @@
-import { formFun } from './FormFunction.js';
+import { formFun, inputForm, removeBlurSelector } from './FormFunction.js';
+
+
+// inputForm(['text-black', 'font-bold'], "h1");
 
 const inputID = document.getElementById("Todo");
 const buttonID = document.getElementById("Knop");
@@ -13,6 +16,7 @@ let buttonCounter = 0;
 let idCounter0 = 0;
 let idCounter1 = 1;
 let idCounter2 = 2;
+
 //Functie maken voor elke knop? Zodat ze werken.
 function NewDate(datumChange, NDiv) {
     const NieuwDate = new Date();
@@ -105,8 +109,6 @@ function Done(diveToChange, newPChange) {
         Delete(diveToChange);
     }, 3000);
 }
-
-
 
 function Edit(woordValue) {
     buttonTagHover();

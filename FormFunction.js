@@ -1,5 +1,3 @@
-const formDiv = document.createElement("div");
-
 export function removeBlurSelector() {
     const allDiv = document.querySelectorAll("div");
 
@@ -10,37 +8,45 @@ export function removeBlurSelector() {
     });
 }
 
-export function inputForm(styleArray, styleElement, woordValue) {
+export function inputForm(styleArray, styleElement, woordValue, parentElement) {
     const array = styleArray;
     const Element = document.createElement(`${styleElement}`);
     let inputName;
+
     array.forEach(style => {
-        Element.classList.add(style)
-        formDiv.appendChild(Element);
+        Element.classList.add(style);
     });
-    if (styleElement == "input") {
+
+    if (styleElement === "input") {
         Element.value = woordValue;
         inputName = document.getElementsByTagName(`${styleElement}`);
+        console.log(parentElement.appendChild(Element));
+    } else {
+        console.log(parentElement.appendChild(Element));
     }
 };
 
-inputForm(['text-black', 'font-bold'], "h1");
-
 export function formFun(woordValue) {
+    const firstDiv = document.getElementById('exclude2');
+    const formDiv = document.createElement("div");
+
     formDiv.setAttribute("id", "formdiv");
     formDiv.classList.add('bg-white', 'h-[17rem]', 'w-96', 'z-40', 'rounded-lg', 'absolute', 'bottom-72', 'ml-14', 'flex', 'items-end', 'justify-center');
+    firstDiv.append(formDiv);
 
     if (woordValue) {
         for (let i = 0; i < 1; i++) {
-            inputForm(['rounded-lg', 'w-48', 'h-10', 'border-2', 'border-black', 'mb-[8rem]', 'fixed', 'font-bold', 'pl-3'], "input", woordValue);
+            inputForm(['rounded-lg', 'w-48', 'h-10', 'border-2', 'border-black', 'mb-[8rem]', 'fixed', 'font-bold', 'pl-3'], "input", woordValue, formDiv);
             break;
         }
     }
 
+    inputForm(['bg-gray-500', 'rounded-md', 'text-white', 'font-bold', 'py-3', 'px-10', 'mx-3', 'mb-3', 'hover:bg-black', 'justify-center'], "button", woordValue, formDiv);
+    inputForm(['bg-gray-500', 'rounded-md', 'text-white', 'font-bold', 'py-3', 'px-10', 'mx-3', 'mb-3', 'hover:bg-black', 'justify-center'], "button", woordValue, formDiv);
+
+
     const formDivID = document.getElementById("formdiv");
     const buttonsInParent = formDivID.getElementsByTagName("button");
-
-    inputForm(['bg-gray-500', 'rounded-md', 'text-white', 'font-bold', 'py-3', 'px-10', 'mx-3', 'mb-3', 'hover:bg-black', 'justify-center'], "button", woordValue);
 
     console.log(buttonsInParent);
 
