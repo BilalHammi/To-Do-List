@@ -1,15 +1,11 @@
 import { formFun, inputForm, removeBlurSelector } from './FormFunction.js';
 
-
-// inputForm(['text-black', 'font-bold'], "h1");
-
 const inputID = document.getElementById("Todo");
 const buttonID = document.getElementById("Knop");
 const divID = document.getElementById("mainDiv");
 const firstDiv = document.getElementById('exclude2');
 const formDiv = document.createElement("div");
 let newButton;
-export let woord = '';
 
 let counterDiv = 0;
 let buttonCounter = 0;
@@ -110,10 +106,10 @@ function Done(diveToChange, newPChange) {
     }, 3000);
 }
 
-function Edit(ParaValue, woordValue) {
+function Edit(ParaValue, woordValue, counter) {
     buttonTagHover();
     blurselector();
-    formFun(ParaValue, woordValue);
+    formFun(ParaValue, woordValue, counter);
 };
 
 function Todo() {
@@ -128,6 +124,7 @@ function Todo() {
         const insideDiv = document.createElement("div");
         const insideDivDate = document.createElement("div");
         const newP = document.createElement("p");
+        newP.setAttribute('id', `pTag-${idCounter0}`);
         const datum = document.createElement("p");
         if (5 > counterDiv) {
             counterDiv++;
@@ -135,7 +132,6 @@ function Todo() {
             NewDate(datum, insideDivDate);
 
             insideDiv.classList.add('flex', 'justify-end', 'w-screen', 'mr-5');
-            //Reminder: kijken wat de oplossing is voor de w-screen, want het neemt de hele scherm in (wat logisch is) inplaats van de parent div.
             newP.classList.add('text-white', 'font-bold', 'ml-3', 'w-screen');
             divID.appendChild(newDivFinal[0]);
             newDivFinal[0].appendChild(insideDiv);
@@ -162,7 +158,7 @@ function Todo() {
             });
 
             buttonTagsFinal[1].addEventListener('click', () => {
-                Edit(newP, woord);
+                Edit(newP, woord, idCounter0);
             });
 
             buttonTagsFinal[2].addEventListener('click', () => {
@@ -181,5 +177,4 @@ function Todo() {
     console.log(counterDiv);
 };
 
-buttonID.addEventListener("click", Todo);
 buttonID.addEventListener("click", Todo);
