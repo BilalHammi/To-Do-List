@@ -10,8 +10,7 @@ let newButton;
 let counterDiv = 0;
 let buttonCounter = 0;
 let idCounter0 = 0;
-let idCounter1 = 1;
-let idCounter2 = 2;
+let counterButton = 0;
 
 //Functie maken voor elke knop? Zodat ze werken.
 function NewDate(datumChange, NDiv) {
@@ -56,8 +55,9 @@ function buttonTagFun() {
     const Buttonstyles = ["rounded", "border-2", "hover:bg-black", "h-8", "w-8", 'bg-gray-500', 'border-gray-500', 'mx-3', 'mt-5'];
     for (let j = 0; j = IDcounters.length; j++) {
         for (let i = 0; i < 3; i++) {
+            counterButton++
             const ButtonTag = document.createElement("button");
-            ButtonTag.setAttribute('id', `${i}`);
+            ButtonTag.setAttribute('id', `${counterButton}`);
             Buttonstyles.forEach(style => {
                 ButtonTag.classList.add(style);
             });
@@ -73,7 +73,6 @@ function buttonTagHover() {
     for (let i = 0; i < buttonTagsHover.length; i++) {
         newButton = buttonTagsHover[i];
         newButton.classList.remove('hover:bg-black');
-        console.log(newButton);
     };
 
     buttonTagsHover.forEach(button => {
@@ -100,7 +99,7 @@ function Delete(divToDelete) {
 
 function Done(diveToChange, newPChange) {
     diveToChange.style.backgroundColor = 'green';
-    console.log(newPChange.classList.add('line-through', 'decoration-zinc-700', 'decoration-2'));
+    newPChange.classList.add('line-through', 'decoration-zinc-700', 'decoration-2');
     setTimeout(() => {
         Delete(diveToChange);
     }, 3000);
@@ -113,9 +112,8 @@ function Edit(ParaValue, woordValue, counter) {
 };
 
 function Todo() {
+    counterButton++;
     idCounter0++;
-    idCounter1++;
-    idCounter2++;
     let woord = inputID.value;
     let iTagFinal = iTagFun();
     let buttonTagsFinal = buttonTagFun();
@@ -137,15 +135,9 @@ function Todo() {
             newDivFinal[0].appendChild(insideDiv);
             insideDiv.appendChild(insideDivDate);
 
-            console.log(buttonTagsFinal[0].setAttribute('onclick', `
-                Delete()
-                `));
-            console.log(buttonTagsFinal[2].setAttribute('onclick', `
-                Done()
-                `));
-            console.log(buttonTagsFinal[1].setAttribute('onclick', `
-                Edit()
-                `));
+            buttonTagsFinal[0].setAttribute('onclick', `Delete()`);
+            buttonTagsFinal[2].setAttribute('onclick', `Done()`);
+            buttonTagsFinal[1].setAttribute('onclick', `Edit()`);
 
             insideDiv.appendChild(buttonTagsFinal[0]);
             buttonTagsFinal[0].appendChild(iTagFinal[0]);
@@ -174,7 +166,6 @@ function Todo() {
     } else {
         console.log("Dat kan niet gozer!");
     }
-    console.log(counterDiv);
 };
 
 buttonID.addEventListener("click", Todo);

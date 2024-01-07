@@ -30,22 +30,20 @@ export function inputForm(styleArray, styleElement, woordValue, parentElement, c
             const lastElement = arrayWoords[arrayWoords.length - 1];
 
             if (arrayWoords.length > 0 && ParaValue.innerHTML === lastElement) {
-                console.log(Element.value);
                 Element.value = lastElement;
             } else {
-                Element.value = woordValue;
+                Element.value = ParaValue.innerHTML;
 
             }
             inputName = document.getElementsByTagName(`${styleElement}`);
-            console.log(parentElement.appendChild(Element));
+            parentElement.appendChild(Element);
             break;
         case "h1":
             Element.innerHTML = "Change you're goal!";
-            console.log(parentElement.appendChild(Element));
+            parentElement.appendChild(Element);
             break;
         case "button":
-            console.log(parentElement.appendChild(Element));
-            console.log("Button");
+            parentElement.appendChild(Element);
             break;
 
         default:
@@ -61,9 +59,6 @@ export function formFun(ParaValue, woordValue, counter) {
     formDiv.classList.add('bg-white', 'h-[17rem]', 'w-96', 'z-40', 'rounded-lg', 'absolute', 'bottom-72', 'ml-14', 'flex', 'items-end', 'justify-center');
 
     firstDiv.append(formDiv);
-
-
-
 
     if (woordValue) {
         for (let i = 0; i < 1; i++) {
@@ -83,10 +78,9 @@ export function formFun(ParaValue, woordValue, counter) {
 
 
     const formDivID = document.getElementById(`formdiv-${counter}`);
-    console.log(formDivID);
     const buttonsInParent = formDivID.getElementsByTagName("button");
 
-    console.log(buttonsInParent);
+    buttonsInParent;
 
     buttonsInParent[0].innerHTML = "Cancel";
     buttonsInParent[1].innerHTML = "Confirm";
@@ -97,23 +91,26 @@ export function formFun(ParaValue, woordValue, counter) {
 
         for (let i = buttonsInParent.length; i >= 0; i--) {
             if (buttonsInParent[i]) {
-                console.log(buttonsInParent[i])
+                buttonsInParent[i]
                 buttonsInParent[i].remove();
             }
         }
     })
 
     const inputFormValue = document.getElementById(`inputFormID-${counter}`);
-    console.log(inputFormValue.value);
 
     buttonsInParent[1].addEventListener("click", () => {
-        let newValue = inputFormValue.value;
+        if (arrayWoords.includes(inputFormValue.value)) {
+            alert("This value already exists");
+        } else {
+            // remove the old value from the array and add the new value
+            arrayWoords.splice(arrayWoords.indexOf(woordValue) + 1, 1);
 
-        arrayWoords.push(newValue);
-        console.log(ParaValue);
-        ParaValue.innerHTML = newValue;
+            arrayWoords.push(inputFormValue.value);
+            ParaValue.innerHTML = inputFormValue.value;
 
-        formDiv.remove();
-        removeBlurSelector();
+            formDiv.remove();
+            removeBlurSelector();
+        }
     })
 };
