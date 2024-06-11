@@ -1,0 +1,7 @@
+US-id|Wie|Wat|Waarom|Realistisch?|Hoe|Prioriteit|
+|:----|----|---|----------|---|--------|------|
+| US-01 | Als gebruiker  | Wil ik taken kunnen toevoegen aan mijn to-do-list | Zodat ik al mijn taken op één plek kan bijhouden. | Ja           | Voeg een knop "verzenden" toe waar gebruikers nieuwe taken kunnen invoeren met een titel en eventueel een deadline. | Hoog       |
+| US-02 | Als gebruiker  | Wil ik mijn taken kunnen markeren als voltooid | Zodat ik mijn voortgang kan bijhouden en me kan concentreren op wat er nog moet gebeuren. | Ja           | Voeg een knop of checkbox toe die de gebruiker kan markeren als voltooid wanneer deze is afgerond. | Gemiddeld  |
+| US-03 | Als gebruiker  | Wil ik mijn taken verwijderen | Zodat ik kan foccussen op 1 taak. | Ja           | Voeg een knop toe om de taken te verwijderen.  | Gemiddeld  |
+| US-04 | Als gebruiker  | Wil ik een knop waarbij ik de to-do kan veranderen als ik van gedachten verander. | Zodat mijn taken goed geformuleerd zijn. | Ja           | Voeg een knop toe waarbij er een form komt en daarin de to-do kan veranderen. | Gemiddeld       |
+| US-05 | Als gebruiker  | wil ik de datum van aanmaak van een to-do boven de to-do hebben. | zodat ik een inschating kan doen om het to-do af te maken. | Ja | Voeg een functie die de datum pakt van de dag wanneer de to do wordt aan gemaakt. | Low  |

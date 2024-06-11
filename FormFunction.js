@@ -1,7 +1,3 @@
-// import { updateWoord } from './script.js';
-// let test;
-// let formInputWorth = '';
-// let pElement = ;
 let arrayWoords = [];
 
 export function removeBlurSelector() {
@@ -73,14 +69,12 @@ export function formFun(ParaValue, woordValue, counter) {
         }
 
     }
-    inputForm(['bg-gray-500', 'rounded-md', 'text-white', 'font-bold', 'py-3', 'px-10', 'mx-3', 'mb-6', 'hover:bg-black', 'justify-center', 'transition', 'ease-in-out', 'delay-100', 'hover:scale-110', 'duration-200'], "button", woordValue, formDiv);
-    inputForm(['bg-gray-500', 'rounded-md', 'text-white', 'font-bold', 'py-3', 'px-10', 'mx-3', 'mb-6', 'hover:bg-black', 'justify-center', 'transition', 'ease-in-out', 'delay-100', 'hover:scale-110', 'duration-200'], "button", woordValue, formDiv);
+    inputForm(['bg-gray-500', 'rounded-md', 'text-white', 'font-bold', 'py-3', 'px-10', 'mx-3', 'mb-6', 'hover:bg-black', 'justify-center'], "button", woordValue, formDiv);
+    inputForm(['bg-gray-500', 'rounded-md', 'text-white', 'font-bold', 'py-3', 'px-10', 'mx-3', 'mb-6', 'hover:bg-black', 'justify-center'], "button", woordValue, formDiv);
 
 
     const formDivID = document.getElementById(`formdiv-${counter}`);
     const buttonsInParent = formDivID.getElementsByTagName("button");
-
-    buttonsInParent;
 
     buttonsInParent[0].innerHTML = "Cancel";
     buttonsInParent[1].innerHTML = "Confirm";
